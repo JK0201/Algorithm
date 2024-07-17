@@ -1,15 +1,12 @@
 def solution(a, b):
-    answer = 0
-    a = str(a)
-    b = str(b)
+    n = int(str(a) + str(b))
+    m = int(str(b) + str(a))
     
-    if int(a + b) > int(b + a):
-        answer = a + b
+    if n > m:
+        return n
     
-    elif int(a + b) < int(b + a):
-        answer = b + a
+    elif n < m:
+        return m 
         
-    elif int(a + b) == int(b + a):
-        answer = a + b
-    
-    return int(answer)
+    elif n == m:
+        return n

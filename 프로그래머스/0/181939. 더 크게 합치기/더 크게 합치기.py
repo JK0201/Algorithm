@@ -1,5 +1,2 @@
 def solution(a, b):
-    n = int(str(a) + str(b))
-    m = int(str(b) + str(a))
-    
-    return max(n, m)
+    return max(int(f'{a}{b}'), int(f'{b}{a}'))

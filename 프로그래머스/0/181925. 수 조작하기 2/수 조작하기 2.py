@@ -9,8 +9,6 @@ def solution(numLog):
         -10 : 'a'
     }
     
-    print(dict)
-    
     for n in numLog:
         if stack and n - stack[-1] in dict:
             answer += dict[n - stack[-1]]

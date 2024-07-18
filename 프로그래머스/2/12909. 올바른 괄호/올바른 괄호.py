@@ -5,10 +5,7 @@ def solution(str):
         if s == '(':
             stack.append(')')
             
-        elif not stack or s != stack[-1]:
+        elif not stack or s != stack.pop():
             return False
-        
-        else:
-            stack.pop()
             
     return not stack

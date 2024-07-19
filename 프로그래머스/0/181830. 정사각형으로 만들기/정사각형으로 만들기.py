@@ -9,7 +9,6 @@ def solution(arr):
     
     if col < row:       
         for i in range(len(arr)):
-            while len(arr[i]) < row:
-                arr[i].append(0)
+            arr[i].extend([0] * (row - col))
     
     return arr

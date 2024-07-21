@@ -1,12 +1,6 @@
 def solution(n_str):
     answer = ''
-    not_zero = False
     
-    for s in n_str:
-        if s != "0":
-            not_zero = True
-        
-        if not_zero:
-            answer += s
-        
-    return answer
+    for i in range(len(n_str)):
+        if n_str[i] != "0":
+            return n_str[i:] 

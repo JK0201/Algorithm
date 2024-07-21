@@ -2,8 +2,8 @@ def solution(rank, attendance):
     answer = 0
     std = []
     
-    for i in range(len(attendance)):
-        if attendance[i]:
+    for i, n in enumerate(attendance):
+        if n:
             std.append([rank[i], i])
             
     std.sort()

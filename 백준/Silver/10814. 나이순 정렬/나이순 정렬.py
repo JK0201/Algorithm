@@ -1,18 +1,14 @@
 import sys
 
 n = int(input())
-data = []
-member_list = [''] * n
+member_list = []
 
 for i in range(n):
-    member = list(map(str, sys.stdin.readline().split()))
-    member_list[i] = member
-    age = member[0]
-    data.append((int(age), i))
+    age, name = list(map(str, sys.stdin.readline().split()))
+    member_list.append((int(age), name))
     
-sorted_data = sorted(data)
+sorted_member = sorted(member_list, key = lambda x: x[0])
 
-for s in sorted_data:
-    idx = s[1]
-    age, name = member_list[idx]
+for s in sorted_member:
+    age, name = s
     print(age, name)

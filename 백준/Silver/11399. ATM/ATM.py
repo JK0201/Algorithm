@@ -6,7 +6,8 @@ order.sort()
 prev = 0
 total = 0
 for o in order:
-    total += o + prev
     prev += o
+    total += prev
+    
     
 print(total)

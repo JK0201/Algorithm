@@ -25,7 +25,6 @@ def solution(s):
                 stack.pop()
         
         if stack:
-            print(stack)
             res[i] = 0
             
         cur_num = q.popleft()

@@ -1,20 +1,15 @@
 def solution(triangle):
-    memo = {}
-    def dp(r, c):
-        if r == 0:
-            memo[(r, c)] = triangle[r][c]
-            return memo[(r, c)]
-        
-        if (r, c) not in memo:
-            if c == 0:
-                memo[(r, c)] = triangle[r][c] + dp(r-1, c)
-
-            elif c == len(triangle[r]) - 1:
-                memo[(r, c)] = triangle[r][c] + dp(r-1, c-1)
-
-            else:
-                memo[(r, c)] = triangle[r][c] + max(dp(r-1, c-1), dp(r-1, c))
-            
-        return memo[(r, c)]
+    memo = {(0, 0) : triangle[0][0]}
     
-    return max(dp(len(triangle)-1, c) for c in range(len(triangle[-1])))
+    for r in range(1, len(triangle)):
+        for c in range(len(triangle[r])):
+            if c == 0:
+                memo[(r, c)] = triangle[r][c] + memo[(r-1, c)]
+            
+            elif c == len(triangle[r]) - 1:
+                memo[(r, c)] = triangle[r][c] + memo[(r-1, c-1)]
+            
+            else:
+                memo[(r, c)] = triangle[r][c] + max(memo[(r-1, c-1)], memo[(r-1, c)])
+                
+    return max(memo.values())

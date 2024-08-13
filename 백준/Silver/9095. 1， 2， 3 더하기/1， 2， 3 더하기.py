@@ -1,19 +1,13 @@
 import sys
 n = int(sys.stdin.readline().strip())
 
-memo = {}
-def dfs(n):
-    if n == 0 or n == 1:
-        return 1
-    
-    if n == 2:
-        return 2
-
-    if n not in memo:
-        memo[n] = dfs(n-1) + dfs(n-2) + dfs(n-3)
-
+memo = {0:1, 1:1, 2:2}
+def dp(n):
+    for i in range(3, n+1):
+        memo[i] = memo[i-1] + memo[i-2] + memo[i-3]
+        
     return memo[n]
 
 for _ in range(n):
     num = int(sys.stdin.readline().strip())
-    print(dfs(num))
+    print(dp(num))

@@ -1,6 +1,5 @@
 import sys
-
-n = int(input())
+n = int(sys.stdin.readline().strip())
 stack = []
 
 def push(num):
@@ -9,36 +8,35 @@ def push(num):
 def pop():
     if stack:
         num = stack.pop()
-        print(num)
+        print(num) 
         
-    else:
-        print(-1)
-        
+    else: 
+        print('-1')
+
 def size():
     print(len(stack))
     
 def empty():
-    print(1 if not stack else 0)
+    print('1') if not stack else print(0)
     
 def top():
-    print(stack[-1] if stack else -1)  
-
-for _ in range(n):
+    print(stack[-1]) if stack else print(-1)
+    
+for i in range(n):
     operation = list(map(str, sys.stdin.readline().split()))
     
-    case = operation[0]
-    
-    if case == 'push':
+    if len(operation) == 2:
         push(operation[1])
         
-    elif case == 'pop':
-        pop()
-        
-    elif case == 'size':
-        size()
-        
-    elif case == 'empty':
-        empty()
-        
     else:
-        top()
+        if operation[0] == 'pop':
+            pop()
+            
+        elif operation[0] == 'size':
+            size()
+            
+        elif operation[0] == 'empty':
+            empty()
+            
+        else:
+            top()

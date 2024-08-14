@@ -1,6 +1,6 @@
 def solution(numbers, target):
     cnt = 0
-    def dfs(cur_val, idx):
+    def dfs(idx, cur_val):
         nonlocal cnt
         
         if idx == len(numbers):
@@ -8,8 +8,8 @@ def solution(numbers, target):
                 cnt += 1
             return
         
-        dfs(cur_val + numbers[idx], idx + 1)
-        dfs(cur_val - numbers[idx], idx + 1)
+        dfs(idx + 1, cur_val + numbers[idx])
+        dfs(idx + 1, cur_val - numbers[idx])
         
     dfs(0, 0)
     return cnt

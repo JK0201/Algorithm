@@ -1,5 +1,4 @@
-import sys
-n = int(sys.stdin.readline())
+n = int(input())
 
 def vps(ps):
     stack = []
@@ -8,11 +7,15 @@ def vps(ps):
             stack.append(')')
             
         elif not stack or stack.pop() != p:
-            return 'NO'
+            return False
         
-    return 'YES' if not stack else 'NO'
+    return not stack
     
 for _ in range(n):
-    ps = sys.stdin.readline().strip()
-    res = vps(ps)
-    print(res)
+    ps = str(input())
+    
+    if vps(ps):
+        print('YES')
+    else:
+        print('NO')
+            

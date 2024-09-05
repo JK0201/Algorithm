@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static HashMap <Integer, String> memo = new HashMap<>();
+    static HashMap<Integer, String> memo = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,7 +26,11 @@ public class Main {
         }
 
         if (!memo.containsKey(n)) {
-            memo.put(n, topDown(n-1) + (" ").repeat((int) Math.pow(3, n-1)) + topDown(n-1));
+            StringBuilder sb = new StringBuilder();
+            sb.append(topDown(n-1));
+            sb.append((" ").repeat((int) Math.pow(3, n-1)));
+            sb.append(topDown(n-1));
+            memo.put(n, sb.toString());
         }
 
         return memo.get(n);

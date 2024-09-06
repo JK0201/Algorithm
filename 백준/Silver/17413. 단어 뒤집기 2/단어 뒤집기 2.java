@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Main{
     static Deque<Character> q = new ArrayDeque<>();
     static StringBuilder sb = new StringBuilder();
     public static void main(String[] args) throws IOException {

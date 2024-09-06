@@ -7,7 +7,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         String[] sortedByExt = new String[n];
-
+        
         for (int i = 0; i < n; i++) {
             sortedByExt[i] = br.readLine().split("\\.")[1];
         }
@@ -23,7 +23,7 @@ public class Main {
         }
 
         StringBuilder sb = new StringBuilder();
-        extSet.forEach((k, v) -> sb.append(k + " " + v + "\n"));
+        extSet.forEach((k, v) -> sb.append(k).append(" ").append(v).append("\n"));
         System.out.println(sb);
     }
 }

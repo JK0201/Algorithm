@@ -23,7 +23,7 @@ public class Main {
         }
 
         int bestSeller = Collections.max(bookSet.values());
-        
+
         for (Map.Entry<String, Integer> entry : bookSet.entrySet()) {
             if (entry.getValue() == bestSeller) {
                 System.out.println(entry.getKey());

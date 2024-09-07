@@ -1,5 +1,5 @@
-import java.util.*;
 import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -7,9 +7,9 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         int n = Integer.parseInt(br.readLine());
-        Deque<Character> q = new ArrayDeque<>();
-        Stack<Integer> s = new Stack<>();
+        Deque<CharOrder> q = new ArrayDeque<>();
 
+        int order = 0;
         while (n-- > 0) {
             String command = br.readLine();
             char operation = command.charAt(0);
@@ -18,23 +18,25 @@ public class Main {
             switch (operation) {
                 case '1':
                     cur_char = command.charAt(2);
-                    q.offerLast(cur_char);
-                    s.push(1);
+                    q.offerLast(new CharOrder(cur_char, order));
+                    order++;
                     break;
 
                 case '2':
                     cur_char = command.charAt(2);
-                    q.offerFirst(cur_char);
-                    s.push(2);
+                    q.offerFirst(new CharOrder(cur_char, order));
+                    order++;
                     break;
 
-                case '3':
-                    if (!q.isEmpty() && !s.isEmpty()) {
-                        int del_order = s.pop();
-                        if (del_order == 1) {
-                            q.pollLast();
-                        } else {
+                default:
+                    if (!q.isEmpty()) {
+                        int first_order = q.peekFirst().getOrder();
+                        int last_order = q.peekLast().getOrder();
+
+                        if (first_order > last_order) {
                             q.pollFirst();
+                        } else {
+                            q.pollLast();
                         }
                     }
                     break;
@@ -42,14 +44,30 @@ public class Main {
         }
 
         if (!q.isEmpty()) {
-            for (char w : q) {
-                sb.append(w);
+            for(CharOrder c : q) {
+                sb.append(c.getWord());
             }
         } else {
             sb.append('0');
         }
-
         System.out.println(sb);
-        br.close();
+    }
+
+    static class CharOrder {
+        private char word;
+        private int order;
+
+        public CharOrder(char word, int order) {
+            this.word = word;
+            this.order = order;
+        }
+
+        public char getWord() {
+            return this.word;
+        }
+
+        public int getOrder() {
+            return this.order;
+        }
     }
 }

@@ -9,7 +9,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
 
-        while (--n >= 0) {
+        while (n-- > 0) {
             String[] command = br.readLine().split(" ");
             dequeFn(command);
         }

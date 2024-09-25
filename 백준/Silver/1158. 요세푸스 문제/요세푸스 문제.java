@@ -1,10 +1,12 @@
+import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int k = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] testCase = br.readLine().split(" ");
+        int n = Integer.parseInt(testCase[0]);
+        int k = Integer.parseInt(testCase[1]);
 
         StringBuilder sb = new StringBuilder();
         sb.append('<');
@@ -28,7 +30,7 @@ public class Main {
         }
 
         sb.append(group.removeFirst()).append('>');
-
         System.out.println(sb);
+        br.close();
     }
 }

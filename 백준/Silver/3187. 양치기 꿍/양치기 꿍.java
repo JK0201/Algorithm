@@ -47,9 +47,6 @@ public class Main {
         int bfs_wolves = 0;
         int bfs_sheep = 0;
 
-        if (grid[r][c] == 'v') bfs_wolves++;
-        else bfs_sheep++;
-
         q.offer(new int[] {r, c});
         visited[r][c] = true;
 
@@ -58,14 +55,14 @@ public class Main {
             int cur_r = cur[0];
             int cur_c = cur[1];
 
+            if (grid[cur_r][cur_c] == 'v') bfs_wolves++;
+            else if (grid[cur_r][cur_c] == 'k') bfs_sheep++;
+
             for (int i = 0; i < 4; i++) {
                 int next_r = cur_r + dr[i];
                 int next_c = cur_c + dc[i];
 
                 if (grid[next_r][next_c] != '#' && !visited[next_r][next_c]) {
-                    if (grid[next_r][next_c] == 'v') bfs_wolves++;
-                    else if (grid[next_r][next_c] == 'k') bfs_sheep++;
-
                     q.offer(new int[] {next_r, next_c});
                     visited[next_r][next_c] = true;
                 }

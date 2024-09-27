@@ -34,7 +34,7 @@ public class Main {
         TreeNode right = post_order(cur_node.right);
 
         if (cur_node.value == a || cur_node.value == b) return cur_node;
-        if (left != null && right != null) return cur_node;
+        else if (left != null && right != null) return cur_node;
         return (left != null)? left : right;
     }
 

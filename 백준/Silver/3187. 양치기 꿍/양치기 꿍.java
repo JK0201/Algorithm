@@ -40,6 +40,7 @@ public class Main {
 
         sb.append(sheep).append(" ").append(wolves);
         System.out.println(sb);
+        br.close();
     }
 
     static void bfs(int r, int c) {

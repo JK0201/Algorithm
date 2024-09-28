@@ -5,14 +5,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st;
         StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
 
         int test_case = Integer.parseInt(br.readLine());
 
         while (test_case-- > 0) {
             int n = Integer.parseInt(br.readLine());
-            PriorityQueue<Applicants> pq = new PriorityQueue<>(Comparator.comparing(applicants -> applicants.test));
+            PriorityQueue<Applicants> pq = new PriorityQueue<>(Comparator.comparingInt(applicant -> applicant.test));
+
             for (int i = 0; i < n; i++) {
                 st = new StringTokenizer(br.readLine());
                 int test = Integer.parseInt(st.nextToken());
@@ -21,21 +22,20 @@ public class Main {
                 pq.offer(new Applicants(test, interview));
             }
 
-            int interview_rank = pq.poll().interview;
-            int res = 1;
+            int target_rank = pq.poll().interview;
+            int count = 1;
             while (!pq.isEmpty()) {
-                Applicants applicant = pq.poll();
-                if (applicant.interview < interview_rank) {
-                    interview_rank = applicant.interview;
-                    res++;
+                int cur_rank = pq.poll().interview;
+                if (cur_rank < target_rank) {
+                    target_rank = cur_rank;
+                    count++;
                 }
             }
-
-            sb.append(res).append('\n');
+            sb.append(count).append('\n');
         }
-
         bw.write(sb.toString());
         bw.flush();
+        bw.close();
         br.close();
     }
 

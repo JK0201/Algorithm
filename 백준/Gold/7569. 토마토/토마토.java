@@ -10,7 +10,6 @@ public class Main {
     static int[] dh = new int[]{-1, 1, 0, 0, 0, 0};
     static int[][][] grid;
     static boolean[][][] visited;
-    static int max_day;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,35 +23,39 @@ public class Main {
         grid = new int[height][row][col];
         visited = new boolean[height][row][col];
 
-        Queue<int[]> q = new LinkedList<>();
         boolean bfs_require = false;
+        Queue<int[]> q = new LinkedList<>();
+
         for (int h = 0; h < height; h++) {
-            for(int r = 0; r < row; r++) {
+            for (int r = 0; r < row; r++) {
                 st = new StringTokenizer(br.readLine());
-                for(int c = 0; c < col; c++) {
+                for (int c = 0; c < col; c++) {
                     int tomato = Integer.parseInt(st.nextToken());
                     grid[h][r][c] = tomato;
 
                     if (tomato == 1) {
                         visited[h][r][c] = true;
                         q.offer(new int[]{h, r, c, 0});
-                    } else if (tomato == 0) bfs_require = true;
+                    } else if (tomato == 0) {
+                        bfs_require = true;
+                    }
                 }
             }
         }
 
         if (!bfs_require) {
             System.out.println("0");
+            br.close();
             return;
         }
 
-        bfs(q);
-
+        int max_day = bfs(q);
         for (int h = 0; h < height; h++) {
-            for(int r = 0; r < row; r++) {
+            for (int r = 0; r < row; r++) {
                 for (int c = 0; c < col; c++) {
-                    if (!visited[h][r][c] && grid[h][r][c] == 0) {
+                    if (grid[h][r][c] == 0 && !visited[h][r][c]) {
                         System.out.println("-1");
+                        br.close();
                         return;
                     }
                 }
@@ -63,15 +66,15 @@ public class Main {
         br.close();
     }
 
-    static void bfs(Queue<int[]> q) {
+    static int bfs(Queue<int[]> q) {
+        int cur_day = 0;
+
         while (!q.isEmpty()) {
             int[] cur = q.poll();
             int cur_h = cur[0];
             int cur_r = cur[1];
             int cur_c = cur[2];
-            int cur_day = cur[3];
-
-            if (max_day < cur_day) max_day = cur_day;
+            cur_day = cur[3];
 
             for (int i = 0; i < 6; i++) {
                 int next_h = cur_h + dh[i];
@@ -86,6 +89,8 @@ public class Main {
                 }
             }
         }
+
+        return cur_day;
     }
 
     static boolean gridCheck(int next_h, int next_r, int next_c) {

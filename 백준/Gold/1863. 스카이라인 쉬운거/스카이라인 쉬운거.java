@@ -25,7 +25,7 @@ public class Main {
         while (!stack.isEmpty()) {
             if (stack.pop() > 0) count++;
         }
-        
+
         System.out.println(count);
         br.close();
     }

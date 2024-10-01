@@ -27,6 +27,7 @@ public class Main {
 
             if (cur_v == target_v) {
                 min_cost = cur_cost;
+                break;
             }
 
             for (int i = 0; i < 3; i++) {

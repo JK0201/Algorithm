@@ -11,4 +11,4 @@ while len(t) > len(n):
         t = t[:-1]
         t = t[::-1]
         
-print(1 if n == t else 0)
+print(1 if t == n else 0)

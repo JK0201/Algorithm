@@ -18,8 +18,8 @@ public class Main {
             return;
         }
 
-        Map<Character, Integer> count1 = new LinkedHashMap<>();
-        Map<Character, Integer> count2 = new LinkedHashMap<>();
+        Map<Character, Integer> count1 = new HashMap<>();
+        Map<Character, Integer> count2 = new HashMap<>();
         for (int i = 0; i < n; i++) {
             count1.put(words1[i], count1.getOrDefault(words1[i], 0) + 1);
             count2.put(words2[i], count2.getOrDefault(words2[i], 0) + 1);

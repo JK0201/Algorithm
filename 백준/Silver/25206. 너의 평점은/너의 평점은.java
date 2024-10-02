@@ -20,24 +20,21 @@ public class Main {
         double total_degree = 0;
         double total_credit = 0;
 
-        try {
-            String input;
-            while ((input = br.readLine()) != null) {
-                st = new StringTokenizer(input);
-                st.nextToken();
-                double credit = Double.parseDouble(st.nextToken());
-                String degree = st.nextToken();
+        int n = 20;
+        while (n-- > 0) {
+            st = new StringTokenizer(br.readLine());
+            st.nextToken();
+            double credit = Double.parseDouble(st.nextToken());
+            String degree = st.nextToken();
 
-                if (!degree.equals("P")) {
-                    total_degree += (credit * dict.get(degree));
-                    total_credit += credit;
-                }
+            if (!degree.equals("P")) {
+                total_degree += (credit * dict.get(degree));
+                total_credit += credit;
             }
-        } catch (Exception ex) {
-        } finally {
-            double res = total_degree / total_credit;
-            System.out.println(res);
-            br.close();
         }
+
+        double res = total_degree / total_credit;
+        System.out.println(res);
+        br.close();
     }
 }

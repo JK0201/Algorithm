@@ -12,7 +12,7 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
         while (n-- > 0) {
             int num = Integer.parseInt(br.readLine());
-            sb.append(dfs(num)).append('\n');
+            sb.append(dp(num)).append('\n');
         }
 
         bw.write(sb.toString());
@@ -21,13 +21,12 @@ public class Main {
         br.close();
     }
 
-    static Long dfs(int num) {
+    static long dp(int num) {
         if (num == 0) return 0L;
-
         if (num == 1 || num == 2) return 1L;
 
         if (!memo.containsKey(num)) {
-            memo.put(num, dfs(num - 2) + dfs(num - 3));
+            memo.put(num, dp(num - 2) + dp(num - 3));
         }
 
         return memo.get(num);

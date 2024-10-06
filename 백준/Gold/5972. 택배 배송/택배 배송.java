@@ -31,7 +31,7 @@ public class Main {
     }
 
     static void bfs() {
-        Queue<int[]> pq = new PriorityQueue<>(Comparator.comparing(value -> value[0]));
+        Queue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(value -> value[0]));
         pq.offer(new int[]{0, 1});
 
         while (!pq.isEmpty()) {

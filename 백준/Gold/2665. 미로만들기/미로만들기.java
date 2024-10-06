@@ -27,7 +27,7 @@ public class Main {
     }
 
     static void bfs() {
-        Queue<int[]> pq = new PriorityQueue<>(Comparator.comparing(value -> value[0]));
+        Queue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(value -> value[0]));
         pq.offer(new int[]{0, 0, 0});
 
         while (!pq.isEmpty()) {
@@ -45,7 +45,7 @@ public class Main {
                     int next_c = cur_c + dc[i];
 
                     if (next_r >= 0 && next_r < n && next_c >= 0 && next_c < n) {
-                        int next_count = grid[next_r][next_c] == 0 ? cur_count + 1 : cur_count;
+                        int next_count = grid[next_r][next_c] == 0? cur_count + 1 : cur_count;
                         pq.offer(new int[]{next_count, next_r, next_c});
                     }
                 }

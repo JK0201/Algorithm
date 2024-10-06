@@ -39,20 +39,18 @@ public class Main {
     }
 
     static int bfs(int start_v, Map<Integer, List<Integer>> grid) {
-        Queue<int[]> q = new LinkedList<>();
+        Queue<Integer> q = new LinkedList<>();
         Set<Integer> visited = new HashSet<>();
         visited.add(start_v);
-        q.offer(new int[]{0, start_v});
+        q.offer(start_v);
 
         while (!q.isEmpty()) {
-            int[] cur = q.poll();
-            int cur_cost = cur[0];
-            int cur_v = cur[1];
+            int cur_v = q.poll();
 
             for (Integer next_v : grid.get(cur_v)) {
                 if (!visited.contains(next_v)) {
                     visited.add(next_v);
-                    q.offer(new int[]{cur_cost + 1, next_v});
+                    q.offer(next_v);
                 }
             }
         }

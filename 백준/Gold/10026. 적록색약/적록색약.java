@@ -32,8 +32,8 @@ public class Main {
             }
         }
 
-        int blind = 0;
         visited = new boolean[n][n];
+        int blind = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (!visited[i][j]) {
@@ -64,7 +64,7 @@ public class Main {
                 int next_c = cur_c + dc[i];
 
                 if (next_r >= 0 && next_r < n && next_c >= 0 && next_c < n) {
-                    if (grid[next_r][next_c] == cur_color && !visited[next_r][next_c]) {
+                    if (cur_color == grid[next_r][next_c] && !visited[next_r][next_c]) {
                         visited[next_r][next_c] = true;
                         q.offer(new int[]{next_r, next_c});
                     }
@@ -94,7 +94,7 @@ public class Main {
                         if ((cur_color == 'R' || cur_color == 'G') && (grid[next_r][next_c] == 'R' || grid[next_r][next_c] == 'G')) {
                             visited[next_r][next_c] = true;
                             q.offer(new int[]{next_r, next_c});
-                        } else if (cur_color == 'B' && grid[next_r][next_c] == 'B') {
+                        } else if(cur_color == 'B' && grid[next_r][next_c] == 'B') {
                             visited[next_r][next_c] = true;
                             q.offer(new int[]{next_r, next_c});
                         }
